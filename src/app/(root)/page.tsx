@@ -4,9 +4,6 @@ function Home() {
   return (
     <div>
       Home Page
-      <div>
-        <UserButton afterSignOutUrl='/'/>
-      </div>
     </div>
   )
 }
