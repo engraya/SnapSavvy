@@ -5,29 +5,29 @@ export const navLinks = [
       icon: "/assets/icons/home.svg",
     },
     {
-      label: "Image Restore",
+      label: "Restore Image",
       route: "/transformations/add/restore",
-      icon: "/assets/icons/image.svg",
+      icon: "/assets/icons/restore-image.svg",
     },
     {
-      label: "Generative Fill",
+      label: "Fill Generation",
       route: "/transformations/add/fill",
-      icon: "/assets/icons/stars.svg",
+      icon: "/assets/icons/fill.svg",
     },
     {
-      label: "Object Remove",
+      label: "Remove Object",
       route: "/transformations/add/remove",
-      icon: "/assets/icons/scan.svg",
+      icon: "/assets/icons/remove.svg",
     },
     {
-      label: "Object Recolor",
+      label: "Recolor Object",
       route: "/transformations/add/recolor",
-      icon: "/assets/icons/filter.svg",
+      icon: "/assets/icons/recolor.svg",
     },
     {
-      label: "Background Remove",
+      label: "Remove Background",
       route: "/transformations/add/removeBackground",
-      icon: "/assets/icons/camera.svg",
+      icon: "/assets/icons/remove.svg",
     },
     {
       label: "Profile",
@@ -37,7 +37,7 @@ export const navLinks = [
     {
       label: "Buy Credits",
       route: "/credits",
-      icon: "/assets/icons/bag.svg",
+      icon: "/assets/icons/buy-credits.svg",
     },
   ];
   
