@@ -122,7 +122,7 @@ export const navLinks = [
   export const transformationTypes = {
     restore: {
       type: "restore",
-      title: "Restore Image",
+      title: "Image Restoration",
       subTitle: "Refine images by removing noise and imperfections",
       config: { restore: true },
       icon: "image.svg",

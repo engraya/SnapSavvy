@@ -22,10 +22,10 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
 
       <section className="profile">
         <div className="profile-balance">
-          <p className="p-14-medium md:p-16-medium">CREDITS AVAILABLE</p>
+          <p className="p-14-medium md:p-16-medium">Available Credits</p>
           <div className="mt-4 flex items-center gap-4">
             <Image
-              src="/assets/icons/coins.svg"
+              src="/assets/icons/credits.svg"
               alt="coins"
               width={50}
               height={50}
@@ -36,10 +36,10 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
         </div>
 
         <div className="profile-image-manipulation">
-          <p className="p-14-medium md:p-16-medium">IMAGE MANIPULATION DONE</p>
+          <p className="p-14-medium md:p-16-medium">Enhanced Images</p>
           <div className="mt-4 flex items-center gap-4">
             <Image
-              src="/assets/icons/photo.svg"
+              src="/assets/icons/images.svg"
               alt="coins"
               width={50}
               height={50}

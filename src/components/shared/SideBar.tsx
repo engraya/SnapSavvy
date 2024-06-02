@@ -28,7 +28,7 @@ const Sidebar = () => {
 
                 return (
                   <li key={link.route} className={`sidebar-nav_element group ${
-                    isActive ? 'bg-emerald-50 text-gray-800' : 'text-teal-950 dark:text-teal-50'
+                    isActive ? 'bg-emerald-50 text-gray-800 hover:text-gray-900' : 'text-teal-950 dark:text-teal-50'
                   }`}>
                     <Link className="sidebar-link" href={link.route}>
                       <Image 

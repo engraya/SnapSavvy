@@ -23,55 +23,45 @@ const Credits = async () => {
       />
 
       <section>
-        <ul className="credits-list">
+        
+          <div className="max-w-7xl mx-auto mt-12 px-6 md:px-12 xl:px-6">
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
           {plans.map((plan) => (
-            <li key={plan.name} className="credits-item">
-              <div className="flex-center flex-col gap-3">
-                <Image src={plan.icon} alt="check" width={50} height={50} />
-                <p className="p-20-semibold mt-2 text-purple-500">
-                  {plan.name}
-                </p>
-                <p className="h1-semibold text-dark-600">${plan.price}</p>
-                <p className="p-16-regular">{plan.credits} Credits</p>
-              </div>
+          <div key={plan.name} className="flex flex-col items-center aspect-auto p-4 sm:p-8 border rounded-3xl bg-gradient-to-r from-green-400 to-blue-400 border-gray-700 shadow-gray-600/10 shadow-none m-2 flex-1 max-w-md">
+          <h2 className="text-lg sm:text-xl font-medium text-white mb-2">{plan.name}</h2>
+          <p className="text-lg sm:text-xl text-center mb-8 mt-4 text-gray-400">
+            <span className="text-3xl sm:text-4xl font-bold text-white">${plan.price}</span> / Month
+          </p>
+          <p className="text-lg sm:text-xl text-center mb-2 text-gray-400">
+            <span className="text-3xl sm:text-4xl font-bold text-white">{plan.credits}</span> Credits
+          </p>
 
-              {/* Inclusions */}
-              <ul className="flex flex-col gap-5 py-9">
-                {plan.inclusions.map((inclusion) => (
-                  <li
-                    key={plan.name + inclusion.label}
-                    className="flex items-center gap-4"
-                  >
-                    <Image
-                      src={`/assets/icons/${
-                        inclusion.isIncluded ? "check.svg" : "cross.svg"
-                      }`}
-                      alt="check"
-                      width={24}
-                      height={24}
-                    />
-                    <p className="p-16-regular">{inclusion.label}</p>
-                  </li>
-                ))}
-              </ul>
+          <ul className="list-none list-inside mb-6 text-center text-gray-300">
+            {plan.inclusions.map((inclusion) => (
+            <li key={plan.name + inclusion.label} className={`${inclusion.isIncluded ?  "font-normal text-emerald-300" : " font-normal text-gray-100 line-through"}`}>{inclusion.label}</li>
+            ))}
 
-              {plan.name === "Free" ? (
-                <Button variant="outline" className="credits-btn">
-                  Free Consumable
-                </Button>
-              ) : (
-                <SignedIn>
-                  <Checkout
-                    plan={plan.name}
-                    amount={plan.price}
-                    credits={plan.credits}
-                    buyerId={user._id}
-                  />
-                </SignedIn>
-              )}
-            </li>
+          </ul>
+          {plan.name === "Free" ? (
+            <Button variant="outline" className="credits-btn bg-teal-300">
+              Free 
+            </Button>
+          ) : (
+            <SignedIn>
+              <Checkout
+                plan={plan.name}
+                amount={plan.price}
+                credits={plan.credits}
+                buyerId={user._id}
+              />
+            </SignedIn>
+          )}
+        </div>
           ))}
-        </ul>
+          
+        </div>
+    </div>
+
       </section>
     </>
   );

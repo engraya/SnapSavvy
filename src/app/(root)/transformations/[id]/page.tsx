@@ -1,7 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
 import Link from "next/link";
-
 import Header from "@src/components/shared/Header";
 import TransformedImage from "@src/components/shared/TransformedImage";
 import { Button } from "@/components/ui/button";
@@ -20,7 +19,7 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
 
       <section className="mt-5 flex flex-wrap gap-4">
         <div className="p-14-medium md:p-16-medium flex gap-2">
-          <p className="text-dark-600">Transformation:</p>
+          <p className="text-dark-600 dark:text-slate-50">Transformation:</p>
           <p className=" capitalize text-purple-400">
             {image.transformationType}
           </p>
@@ -30,7 +29,7 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
           <>
             <p className="hidden text-dark-400/50 md:block">&#x25CF;</p>
             <div className="p-14-medium md:p-16-medium flex gap-2 ">
-              <p className="text-dark-600">Prompt:</p>
+              <p className="text-dark-600 dark:text-slate-50">Prompt:</p>
               <p className=" capitalize text-purple-400">{image.prompt}</p>
             </div>
           </>
@@ -40,7 +39,7 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
           <>
             <p className="hidden text-dark-400/50 md:block">&#x25CF;</p>
             <div className="p-14-medium md:p-16-medium flex gap-2">
-              <p className="text-dark-600">Color:</p>
+              <p className="text-dark-600 dark:text-slate-50">Color:</p>
               <p className=" capitalize text-purple-400">{image.color}</p>
             </div>
           </>
@@ -50,7 +49,7 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
           <>
             <p className="hidden text-dark-400/50 md:block">&#x25CF;</p>
             <div className="p-14-medium md:p-16-medium flex gap-2">
-              <p className="text-dark-600">Aspect Ratio:</p>
+              <p className="text-dark-600 dark:text-slate-50">Aspect Ratio:</p>
               <p className=" capitalize text-purple-400">{image.aspectRatio}</p>
             </div>
           </>
@@ -61,7 +60,7 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
         <div className="transformation-grid">
           {/* MEDIA UPLOADER */}
           <div className="flex flex-col gap-4">
-            <h3 className="h3-bold text-dark-600">Original</h3>
+            <h3 className="h3-bold text-dark-600 bg-gradient-to-r from-indigo-400 to-teal-400 bg-clip-text dark:text-emerald-50 text-transparent">Original Image</h3>
 
             <Image
               width={getImageSize(image.transformationType, image, "width")}

@@ -63,8 +63,8 @@ const MediaUploader = ({
     >
       {({ open }) => (
         <div className="flex flex-col gap-4">
-          <h3 className="h3-bold text-dark-600">
-            Original
+          <h3 className="h3-bold text-dark-600 dark:text-emerald-50">
+            Original Image
           </h3>
 
           {publicId ? (
@@ -85,13 +85,13 @@ const MediaUploader = ({
             <div className="media-uploader_cta" onClick={() => open()}>
               <div className="media-uploader_cta-image">
                 <Image 
-                  src="/assets/icons/add.svg"
+                  src="/assets/icons/upload.svg"
                   alt="Add Image"
                   width={24}
                   height={24}
                 />
               </div>
-                <p className="p-14-medium">Click here to upload image</p>
+                <p className="p-14-medium dark:text-slate-100">Upload image</p>
             </div>
           )}
         </div>

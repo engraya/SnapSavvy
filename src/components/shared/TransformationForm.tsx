@@ -192,7 +192,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
           control={form.control}
           name="title"
           formLabel="Image Title"
-          className="w-full"
+          className="w-full dark:text-slate-100"
           render={({ field }) => <Input {...field} className="input-field" />}
         />
 
@@ -201,7 +201,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
             control={form.control}
             name="aspectRatio"
             formLabel="Aspect Ratio"
-            className="w-full"
+            className="w-full dark:text-slate-100"
             render={({ field }) => (
               <Select
                 onValueChange={(value) => onSelectFieldHandler(value, field.onChange)}
@@ -228,9 +228,9 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
               control={form.control}
               name="prompt"
               formLabel={
-                type === 'remove' ? 'Object to remove' : 'Object to recolor'
+                type === 'remove' ? 'Object to Remove' : 'Object to Recolor'
               }
-              className="w-full"
+              className="w-full dark:text-slate-100"
               render={({ field }) => (
                 <Input 
                   value={field.value}
@@ -250,7 +250,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
                 control={form.control}
                 name="color"
                 formLabel="Replacement Color"
-                className="w-full"
+                className="w-full dark:text-slate-100"
                 render={({ field }) => (
                   <Input 
                     value={field.value}
@@ -308,7 +308,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
             className="submit-button capitalize"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Submitting...' : 'Save Image'}
+            {isSubmitting ? 'Saving Image...' : 'Save Image'}
           </Button>
         </div>
       </form>
