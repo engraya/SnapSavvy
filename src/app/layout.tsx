@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@src/components/ThemeProvider/ThemeProvider";
-
+import { Navbar } from "@src/components/Navbar";
+import { Footer } from "@src/components/Footer";
 import {
   ClerkProvider,
 } from '@clerk/nextjs'
@@ -28,7 +29,11 @@ export default function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
-              {children}
+          <div>
+          <Navbar />
+            {children}
+            </div>
+          <Footer />
             </ThemeProvider>
           </body>
       </html>

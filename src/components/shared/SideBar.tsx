@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from '../ui/button'
-import { ThemeToggler } from '../ThemeToggler/ThemeToggler'
+
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -14,12 +14,12 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="flex size-full flex-col gap-2">
-        <div className='flex justify-center items-center gap-3 mb-6'>
+        {/* <div className='flex justify-center items-center gap-3 mb-6'>
         <Link href="/" className="sidebar-logo">
           <Image src="/assets/images/logo.png" alt="logo" className='rounded-xl' width={200} height={28} />
         </Link>
         <ThemeToggler/>
-        </div>
+        </div> */}
          <nav className="sidebar-nav">
           <SignedIn>
             <ul className="sidebar-nav_elements">
