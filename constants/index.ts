@@ -5,12 +5,12 @@ export const navLinks = [
       icon: "/assets/icons/home.svg",
     },
     {
-      label: "Restore Image",
+      label: "Restore",
       route: "/transformations/add/restore",
       icon: "/assets/icons/restore-image.svg",
     },
     {
-      label: "Fill Generation",
+      label: "Fill",
       route: "/transformations/add/fill",
       icon: "/assets/icons/fill.svg",
     },
@@ -20,7 +20,7 @@ export const navLinks = [
       icon: "/assets/icons/remove.svg",
     },
     {
-      label: "Recolor Object",
+      label: "Recolor",
       route: "/transformations/add/recolor",
       icon: "/assets/icons/recolor.svg",
     },

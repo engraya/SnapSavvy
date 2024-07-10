@@ -11,7 +11,7 @@ export const Navbar = () => {
   const pathname = usePathname();
   return (
     <div className="w-full bg-gradient-to-b from-blue-50 via-transparent to-transparent">
-      <nav className="container  relative flex flex-wrap items-center justify-between p-4 mx-auto lg:justify-between xl:px-0">
+      <nav className="container  relative flex flex-wrap items-center justify-between p-2 mx-auto lg:justify-between xl:px-0">
         {/* Logo  */}
         <Disclosure>
           {({ open }) => (
@@ -99,7 +99,7 @@ export const Navbar = () => {
             {navLinks.map((menu, index) => {
               return (
                 <li className="mr-3 nav__item" key={index}>
-                <Link href="/" className="inline-block px-2 py-2 text-md font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
+                <Link href={menu.route} className="inline-block px-2 py-2 text-sm font-bold text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
                     {menu.label}
                 </Link>
               </li>
