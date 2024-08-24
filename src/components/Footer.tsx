@@ -28,7 +28,7 @@ export function Footer() {
             </div>
 
             <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
-            SnapSavvy is an innovative, AI-powered application designed to revolutionize the way you enhance and restore your photos. Whether you're looking to bring new life to old, faded images or to perfect your latest snapshots.
+            SnapSavvy is an innovative, AI-powered application designed to revolutionize the way you enhance and restore your photos. Whether you&apos;re looking to bring new life to old, faded images or to perfect your latest snapshots.
             </div>
           </div>
           <div className="ml-auto">
