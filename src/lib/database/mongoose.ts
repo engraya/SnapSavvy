@@ -23,7 +23,7 @@ export const connectToDatabase = async () => {
   cached.promise = 
     cached.promise || 
     mongoose.connect(MONGODB_URL, { 
-      dbName: 'snappsavvyPro_DB', bufferCommands: false 
+      dbName: 'Snap_Database', bufferCommands: false 
     })
 
   cached.conn = await cached.promise;
