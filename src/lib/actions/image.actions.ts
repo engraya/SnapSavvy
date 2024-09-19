@@ -3,7 +3,6 @@
 import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../database/mongoose";
 import { handleError } from "../utils";
-import User from "../database/models/user.model";
 import Image from "../database/models/image.model";
 import { redirect } from "next/navigation";
 
@@ -16,20 +15,11 @@ const populateUser = (query: any) => query.populate({
 })
 
 // ADD IMAGE
-export async function addImage({ image, userId, path }: AddImageParams) {
+export async function addImage({ image, path }: AddImageParams) {
   try {
     await connectToDatabase();
 
-    const author = await User.findById(userId);
-
-    if (!author) {
-      throw new Error("User not found");
-    }
-
-    const newImage = await Image.create({
-      ...image,
-      author: author._id,
-    })
+    const newImage = await Image.create(image)
 
     revalidatePath(path);
 
@@ -40,15 +30,11 @@ export async function addImage({ image, userId, path }: AddImageParams) {
 }
 
 // UPDATE IMAGE
-export async function updateImage({ image, userId, path }: UpdateImageParams) {
+export async function updateImage({ image, path }: UpdateImageParams) {
   try {
     await connectToDatabase();
 
     const imageToUpdate = await Image.findById(image._id);
-
-    if (!imageToUpdate || imageToUpdate.author.toHexString() !== userId) {
-      throw new Error("Unauthorized or image not found");
-    }
 
     const updatedImage = await Image.findByIdAndUpdate(
       imageToUpdate._id,

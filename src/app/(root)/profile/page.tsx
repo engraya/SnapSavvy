@@ -1,20 +1,20 @@
 import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-
 import { Collection } from "@src/components/shared/Collection";
 import Header from "@src/components/shared/Header";
 import { getUserImages } from "@src/lib/actions/image.actions";
 import { getUserById } from "@src/lib/actions/user.actions";
-
+import { currentUser } from "@clerk/nextjs/server";
 const Profile = async ({ searchParams }: SearchParamProps) => {
   const page = Number(searchParams?.page) || 1;
-  const { userId } = auth();
+  const user = await currentUser();
+  const  userId = user?.id
 
   if (!userId) redirect("/sign-in");
 
-  const user = await getUserById(userId);
-  const images = await getUserImages({ page, userId: user._id });
+
+  // const images = await getUserImages({ page, userId: user._id });
 
   return (
     <>
@@ -31,7 +31,8 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
               height={50}
               className="size-9 md:size-12"
             />
-            <h2 className="h2-bold text-dark-600">{user.creditBalance}</h2>
+            {/* <h2 className="h2-bold text-dark-600">{user.creditBalance}</h2> */}
+            <h2 className="h2-bold text-dark-600">10</h2>
           </div>
         </div>
 
@@ -45,17 +46,17 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
               height={50}
               className="size-9 md:size-12"
             />
-            <h2 className="h2-bold text-dark-600">{images?.data.length}</h2>
+            {/* <h2 className="h2-bold text-dark-600">{images?.data.length}</h2> */}
           </div>
         </div>
       </section>
 
       <section className="mt-8 md:mt-14">
-        <Collection
+        {/* <Collection
           images={images?.data}
           totalPages={images?.totalPages}
           page={page}
-        />
+        /> */}
       </section>
     </>
   );

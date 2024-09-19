@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-
 import {
   Select,
   SelectContent,
@@ -23,13 +22,12 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { aspectRatioOptions, creditFee, defaultValues, transformationTypes } from "@/constants"
+import { aspectRatioOptions, defaultValues, transformationTypes } from "@/constants"
 import  { CustomField }  from "./CustomField"
 import { useEffect, useState, useTransition } from "react"
 import { AspectRatioKey, debounce, deepMergeObjects } from "@src/lib/utils"
 import MediaUploader from "./MediaUploader"
 import TransformedImage from "./TransformedImage"
-import { updateCredits } from "@src/lib/actions/user.actions"
 import { getCldImageUrl } from "next-cloudinary"
 
 import { addImage, updateImage } from "@src/lib/actions/image.actions"
@@ -98,7 +96,6 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
         try {
           const newImage = await addImage({
             image: imageData,
-            userId,
             path: '/'
           })
 
@@ -119,7 +116,6 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
               ...imageData,
               _id: data._id
             },
-            userId,
             path: `/transformations/${data._id}`
           })
 
@@ -173,9 +169,6 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
 
     setNewTransformation(null)
 
-    startTransition(async () => {
-      await updateCredits(userId, creditFee)
-    })
   }
 
   useEffect(() => {
@@ -187,7 +180,6 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        {creditBalance < Math.abs(creditFee) && <InsufficientCreditsModal />}
         <CustomField 
           control={form.control}
           name="title"
