@@ -5,14 +5,8 @@ import { connectToDatabase } from "../database/mongoose";
 import { handleError } from "../utils";
 import Image from "../database/models/image.model";
 import { redirect } from "next/navigation";
-
 import { v2 as cloudinary } from 'cloudinary'
 
-const populateUser = (query: any) => query.populate({
-  path: 'author',
-  model: User,
-  select: '_id firstName lastName clerkId'
-})
 
 // ADD IMAGE
 export async function addImage({ image, path }: AddImageParams) {
@@ -54,7 +48,6 @@ export async function updateImage({ image, path }: UpdateImageParams) {
 export async function deleteImage(imageId: string) {
   try {
     await connectToDatabase();
-
     await Image.findByIdAndDelete(imageId);
   } catch (error) {
     handleError(error)
@@ -68,7 +61,7 @@ export async function getImageById(imageId: string) {
   try {
     await connectToDatabase();
 
-    const image = await populateUser(Image.findById(imageId));
+    const image = await Image.findById(imageId);
 
     if(!image) throw new Error("Image not found");
 
@@ -118,7 +111,7 @@ export async function getAllImages({ limit = 9, page = 1, searchQuery = '' }: {
 
     const skipAmount = (Number(page) -1) * limit;
 
-    const images = await populateUser(Image.find(query))
+    const images = await Image.find(query)
       .sort({ updatedAt: -1 })
       .skip(skipAmount)
       .limit(limit);
@@ -151,7 +144,7 @@ export async function getUserImages({
 
     const skipAmount = (Number(page) - 1) * limit;
 
-    const images = await populateUser(Image.find({ author: userId }))
+    const images = await Image.find({ author: userId })
       .sort({ updatedAt: -1 })
       .skip(skipAmount)
       .limit(limit);

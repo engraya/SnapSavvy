@@ -112,7 +112,7 @@ export const Navbar = () => {
         <div className="hidden mr-3 space-x-4 justify-center items-center lg:flex nav__item">
         <ThemeToggler/>
         <SignedOut>
-          <button className="px-6 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg">
+          <button className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg">
             <Link href="/sign-in">Login</Link>
             </button>
         </SignedOut>
