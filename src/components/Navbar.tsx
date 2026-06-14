@@ -4,7 +4,7 @@ import Image from "next/image"
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
 import { ThemeToggler } from "./ThemeToggler/ThemeToggler";
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
-import { navLinks } from "@constants";
+import { navLinks } from "@/constants";
 import { usePathname } from 'next/navigation'
 export const Navbar = () => {
 

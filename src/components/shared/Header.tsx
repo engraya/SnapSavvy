@@ -2,13 +2,14 @@ import React from 'react'
 
 const Header = ({ title, subtitle }: { title: string, subtitle?: string }) => {
   return (
-    <>
-    <div className='flex justify-center items-center'>
-      <h2 className="h2-bold text-dark-600 bg-gradient-to-r from-indigo-400 to-teal-400 bg-clip-text text-transparent">{title}</h2>
-
+    <div className="flex flex-col gap-1.5 mb-6">
+      <h2 className="h2-bold gradient-accent-text">{title}</h2>
+      {subtitle && (
+        <p className="p-16-regular text-slate-500 dark:text-slate-400 max-w-xl">
+          {subtitle}
+        </p>
+      )}
     </div>
-    {subtitle && <p className="p-16-regular mt-4 text-slate-800 dark:text-slate-100 text-center">{subtitle}</p>}
-    </>
   )
 }
 

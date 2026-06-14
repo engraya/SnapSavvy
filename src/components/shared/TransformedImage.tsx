@@ -9,11 +9,12 @@ import React from 'react'
 const TransformedImage = ({ image, type, title, transformationConfig, isTransforming, setIsTransforming, hasDownload = false }: TransformedImageProps) => {
   const downloadHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
+    if (!image?.publicId) return;
 
     download(getCldImageUrl({
-      width: image?.width,
-      height: image?.height,
-      src: image?.publicId,
+      width: image.width,
+      height: image.height,
+      src: image.publicId,
       ...transformationConfig
     }), title)
   }
@@ -21,22 +22,22 @@ const TransformedImage = ({ image, type, title, transformationConfig, isTransfor
   return (
     <div className="flex flex-col gap-4">
       <div className="flex-between">
-        <h3 className="h3-bold text-dark-600 dark:text-slate-50">
+        <h3 className="h3-bold gradient-accent-text">
           Transformed
         </h3>
 
         {hasDownload && (
-          <button 
-            className="download-btn" 
+          <button
+            className="download-btn"
             onClick={downloadHandler}
           >
-            <Image 
+            <Image
               src="/assets/icons/download.svg"
-              alt="Download"
-              width={24}
-              height={24}
-              className="pb-[6px]"
+              alt=""
+              width={16}
+              height={16}
             />
+            Download
           </button>
         )}
       </div>
@@ -46,8 +47,8 @@ const TransformedImage = ({ image, type, title, transformationConfig, isTransfor
           <CldImage 
             width={getImageSize(type, image, "width")}
             height={getImageSize(type, image, "height")}
-            src={image?.publicId}
-            alt={image.title}
+            src={image.publicId}
+            alt={image.title ?? "Transformed image"}
             sizes={"(max-width: 767px) 100vw, 50vw"}
             placeholder={dataUrl as PlaceholderValue}
             className="transformed-image"
@@ -76,7 +77,12 @@ const TransformedImage = ({ image, type, title, transformationConfig, isTransfor
         </div>
       ): (
         <div className="transformed-placeholder">
-          Transformed Image
+          <div className="flex flex-col items-center gap-2 opacity-60">
+            <Image src="/assets/icons/stars.svg" alt="" width={32} height={32} className="opacity-40" />
+            <p className="p-14-medium text-slate-500 dark:text-slate-400 text-center">
+              Apply a transformation to see the result here
+            </p>
+          </div>
         </div>
       )}
     </div>

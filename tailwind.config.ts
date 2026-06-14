@@ -40,7 +40,7 @@ const config = {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
-        accent: { 
+        accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
@@ -52,6 +52,13 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // SnapSavvy design tokens
+        "snap-surface": "hsl(222 18% 11%)",
+        "snap-sidebar": "hsl(222 18% 9%)",
+        "snap-border":  "hsl(262 20% 22%)",
+        "dark-600": "#1a1a2e",
+        "dark-700": "#111827",
+        "dark-400": "#374151",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -67,10 +74,25 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        shimmer: {
+          "0%":   { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+        "fade-up": {
+          "0%":   { opacity: "0", transform: "translateY(8px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "scale-in": {
+          "0%":   { opacity: "0", transform: "scale(0.97)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        "accordion-up":   "accordion-up 0.2s ease-out",
+        shimmer:          "shimmer 2s linear infinite",
+        "fade-up":        "fade-up 0.3s ease-out",
+        "scale-in":       "scale-in 0.2s ease-out",
       },
     },
   },

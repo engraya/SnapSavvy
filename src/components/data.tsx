@@ -10,15 +10,28 @@ import {
 import benefitOneImg from "../../public/img/hero2.jpg";
 import benefitTwoImg from "../../public/img/hero3.jpg";
 
-const benefitOne = {
+export interface BenefitBullet {
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+}
+
+export interface BenefitData {
+  title: string;
+  desc: string;
+  image: typeof benefitOneImg;
+  bullets: BenefitBullet[];
+}
+
+export const benefitOne: BenefitData = {
   title: "Key Features",
   desc: "",
   image: benefitOneImg,
   bullets: [
     {
       title: "Advanced AI Technology",
-      desc: " Leveraging the latest in AI technology to provide the best photo editing tools.",
-      icon: <  FaceSmileIcon />,
+      desc: "Leveraging the latest in AI technology to provide the best photo editing tools.",
+      icon: <FaceSmileIcon />,
     },
     {
       title: "Comprehensive Features",
@@ -30,18 +43,17 @@ const benefitOne = {
       desc: "Simple, user-friendly interface that makes advanced editing accessible to everyone.",
       icon: <CursorArrowRaysIcon />,
     },
-    
   ],
 };
 
-const benefitTwo = {
+export const benefitTwo: BenefitData = {
   title: "Offer more benefits here",
   desc: "",
   image: benefitTwoImg,
   bullets: [
     {
       title: "Mobile Responsive Template",
-      desc: "Snappsavvy is designed as a mobile first responsive template.",
+      desc: "SnapSavvy is designed as a mobile first responsive template.",
       icon: <DevicePhoneMobileIcon />,
     },
     {
@@ -51,11 +63,8 @@ const benefitTwo = {
     },
     {
       title: "Dark & Light Mode",
-      desc: "Snappsavvy comes with a zero-config light & dark mode. ",
+      desc: "SnapSavvy comes with a zero-config light & dark mode.",
       icon: <SunIcon />,
     },
   ],
 };
-
-
-export {benefitOne, benefitTwo};

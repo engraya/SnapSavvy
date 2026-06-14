@@ -2,16 +2,14 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@src/components/ThemeProvider/ThemeProvider";
-import { Navbar } from "@src/components/Navbar";
-import { Footer } from "@src/components/Footer";
-import {
-  ClerkProvider,
-} from '@clerk/nextjs'
+import { ClerkProvider } from "@clerk/nextjs";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Snap Savvy",
-  description: "Snap Savvy is an AI Powered Image enhancement App",
+  title: "SnapSavvy — AI-Powered Image Enhancement",
+  description:
+    "SnapSavvy uses cutting-edge AI to restore, enhance, and transform your photos. Remove backgrounds, recolor objects, generative fill, and more.",
 };
 
 export default function RootLayout({
@@ -21,23 +19,18 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-          <div>
-          <Navbar />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
             {children}
-            </div>
-          <Footer />
-            </ThemeProvider>
-          </body>
+          </ThemeProvider>
+        </body>
       </html>
     </ClerkProvider>
-  
   );
 }

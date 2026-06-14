@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { checkoutCredits } from "@src/lib/actions/transaction.actions";
 
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 
 const Checkout = ({
   plan,
@@ -64,9 +64,9 @@ const Checkout = ({
         <Button
           type="submit"
           role="link"
-          className="w-full rounded-full bg-slate-100 bg-cover"
+          className="w-full rounded-full bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold hover:from-blue-700 hover:to-violet-700 hover:shadow-lg hover:shadow-violet-500/25 transition-all duration-200 active:scale-[0.98] py-4"
         >
-          Buy Credit
+          Buy Credits
         </Button>
       </section>
     </form>

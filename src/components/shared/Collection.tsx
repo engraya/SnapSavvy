@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -15,7 +16,7 @@ import { transformationTypes } from "@/constants";
 import { IImage } from "@src/lib/database/models/image.model";
 import { formUrlQuery } from "@src/lib/utils";
 
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 
 import { Search } from "./Search";
 
@@ -33,7 +34,6 @@ export const Collection = ({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // PAGINATION HANDLER
   const onPageChange = (action: string) => {
     const pageValue = action === "next" ? Number(page) + 1 : Number(page) - 1;
 
@@ -49,19 +49,39 @@ export const Collection = ({
   return (
     <>
       <div className="collection-heading">
-        <h2 className="h2-bold text-dark-600 bg-gradient-to-r from-indigo-400 to-teal-400 bg-clip-text text-transparent">Recent Enhancements</h2>
+        <h2 className="h2-bold gradient-accent-text">Recent Enhancements</h2>
         {hasSearch && <Search />}
       </div>
 
       {images.length > 0 ? (
         <ul className="collection-list">
           {images.map((image) => (
-            <Card image={image} key={image.title} />
+            <Card image={image} key={image._id} />
           ))}
         </ul>
       ) : (
         <div className="collection-empty">
-          <p className="p-20-semibold text-gray-100">Empty List</p>
+          <div className="flex flex-col items-center gap-3 text-center max-w-xs">
+            <div className="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+              <Image
+                src="/assets/icons/image.svg"
+                alt=""
+                width={24}
+                height={24}
+                className="opacity-50"
+              />
+            </div>
+            <p className="p-18-semibold text-slate-700 dark:text-slate-300">No images yet</p>
+            <p className="p-14-medium text-slate-400 dark:text-slate-500">
+              Start enhancing your images to see them here.
+            </p>
+            <Link
+              href="/transformations/add/restore"
+              className="submit-button text-white text-sm px-5 py-2 rounded-full inline-block text-center mt-2"
+            >
+              Enhance an image
+            </Link>
+          </div>
         </div>
       )}
 
@@ -70,18 +90,18 @@ export const Collection = ({
           <PaginationContent className="flex w-full">
             <Button
               disabled={Number(page) <= 1}
-              className="collection-btn"
+              className="collection-btn disabled:opacity-40 disabled:cursor-not-allowed"
               onClick={() => onPageChange("prev")}
             >
               <PaginationPrevious className="hover:bg-transparent hover:text-white" />
             </Button>
 
-            <p className="flex-center p-16-medium w-fit flex-1">
+            <p className="flex-center p-16-medium w-fit flex-1 text-slate-600 dark:text-slate-300">
               {page} / {totalPages}
             </p>
 
             <Button
-              className="button w-32 bg-purple-gradient bg-cover text-white"
+              className="collection-btn disabled:opacity-40 disabled:cursor-not-allowed"
               onClick={() => onPageChange("next")}
               disabled={Number(page) >= totalPages}
             >
@@ -94,7 +114,7 @@ export const Collection = ({
   );
 };
 
-const Card = ({ image }: { image: IImage }) => {
+const Card = React.memo(function Card({ image }: { image: IImage }) {
   return (
     <li>
       <Link href={`/transformations/${image._id}`} className="collection-card">
@@ -105,11 +125,11 @@ const Card = ({ image }: { image: IImage }) => {
           height={image.height}
           {...image.config}
           loading="lazy"
-          className="h-52 w-full rounded-[10px] object-cover"
+          className="w-full aspect-[4/3] rounded-[10px] object-cover"
           sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
         />
         <div className="flex-between">
-          <p className="p-20-semibold mr-3 line-clamp-1 text-dark-600">
+          <p className="p-20-semibold mr-3 line-clamp-1 text-slate-800 dark:text-slate-100">
             {image.title}
           </p>
           <Image
@@ -118,12 +138,13 @@ const Card = ({ image }: { image: IImage }) => {
                 image.transformationType as TransformationTypeKey
               ].icon
             }`}
-            alt={image.title}
+            alt={image.transformationType}
             width={24}
             height={24}
+            className="opacity-70 dark:opacity-80"
           />
         </div>
       </Link>
     </li>
   );
-};
+});

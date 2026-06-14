@@ -9,7 +9,7 @@ import {
     FormControl,
     FormMessage,
     FormLabel,
- } from "@components/ui/form";
+} from "@/components/ui/form";
 
 import { formSchema } from "./TransformationForm";
 
